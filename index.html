@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>BINGO!!!</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+      #historico span { padding: 10px; }
+    </style>
+
+  </head>
+  <body>
+
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row" style="height: 300px;">
+        <div class="col-md-4">
+          <div class="text-center">
+            <br/><br/><br/><br/>
+
+            <h1 class="bold" style="font-size: 88px;" id="num">Iniciar...<h1>   
+          </div>
+          <br/><br/><br/><br/>
+          <button type="button" id="btnNum" class="btn btn-danger btn-lg btn-block active">
+            SORTEAR NÚMERO
+          </button>
+        </div>
+				<div class="col-md-8">
+          <div id="historico" style="font-size: 56px;white-space: nowrap;"></div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+
+    <script>
+      $(function() {
+          var numeros = [];
+
+          $('#btnNum').click(function() {
+              roda = true
+              while(roda) {
+                var num = Math.floor(Math.random() * 100);
+
+                if(!numeros[num]) {
+                  roda = false;
+                  break;
+                } else {
+                  alert('numero repetidos');
+                }
+              }
+
+              numeros[num] = num;
+                            
+              $('#num').empty().html(num);
+
+              console.log(numeros);
+
+              if($('#historico span').length % 7 == 0) {
+                $('#historico').append('<br/>');
+              }
+
+              $('#historico').append('<span>'+num+'</span>');
+
+          });
+
+      });
+    </script>
+  </body>
+</html>
